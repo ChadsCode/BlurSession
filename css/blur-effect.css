@@ -1,0 +1,74 @@
+/* =========================================
+   BlurSession - Blur Effect Stylesheet
+   Enterprise-grade privacy solution
+   Created by: Chad Wigington
+   ========================================= */
+
+/* === Blur Effect === */
+
+/* The overlay element that covers the sensitive area */
+#blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.65); /* White with 65% opacity */
+  backdrop-filter: blur(10px); /* Default blur amount */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 8; /* Between main content and header/footer */
+  transition: opacity var(--transition-normal) ease, visibility var(--transition-normal) ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Allow clicks to pass through when not blurred */
+  touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+/* When the blur is active */
+body.blur-active #blur-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Capture clicks when active */
+}
+
+/* Message that appears in the center of the blurred area */
+#blur-overlay::after {
+  content: 'Move mouse or touch to view protected content';
+  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 90%;
+}
+
+/* === States and Indicators === */
+
+/* Status indicator styles when blur is active */
+body.blur-active #status-banner {
+  display: block;
+  background-color: var(--accent-color); /* Green */
+  color: white;
+}
+
+/* Status indicator styles when blur is inactive */
+body.blur-inactive #status-banner {
+  display: block;
+  background-color: var(--debit-color); /* Red */
+  color: white;
+}
+
+/* Responsive adjustments for the blur effect */
+@media (max-width: 768px) {
+  #blur-overlay::after {
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    max-width: 80%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,366 @@
+/* =========================================
+   BlurSession.com - Main Stylesheet
+   Enterprise-grade privacy solution
+   Created by: Chad Wigington
+   ========================================= */
+
+/* === Base Styles === */
+:root {
+  /* Primary Color Palette */
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #1abc9c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  
+  /* Text Colors */
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-light: #ecf0f1;
+  
+  /* Transaction Colors */
+  --credit-color: #27ae60;
+  --debit-color: #e74c3c;
+  
+  /* Spacing Variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border Radius */
+  --border-radius: 4px;
+  
+  /* Animation Speeds */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast) ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* === Layout Components === */
+
+/* === Header === */
+header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: var(--spacing-md) 0;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h1 {
+  color: var(--text-light);
+  margin-bottom: 0;
+  font-size: 1.8rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--light-color);
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-lg);
+}
+
+nav ul li a {
+  color: var(--text-light);
+  font-weight: 500;
+  position: relative;
+  padding: var(--spacing-xs) 0;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+nav ul li a.active {
+  color: var(--accent-color);
+}
+
+nav ul li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: var(--spacing-xl) 0;
+  position: relative;
+  z-index: 5;
+}
+
+.dashboard {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Account Cards */
+.account-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.account-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast) ease;
+}
+
+.account-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.account-card.wide {
+  grid-column: 1 / -1;
+}
+
+.account-details p {
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.account-details p:last-child {
+  border-bottom: none;
+}
+
+/* Transaction Styling */
+.transactions {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.transaction:last-child {
+  border-bottom: none;
+}
+
+.transaction-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.transaction-desc {
+  font-weight: 500;
+}
+
+.transaction-amount {
+  font-weight: 600;
+  text-align: right;
+}
+
+.credit {
+  color: var(--credit-color);
+}
+
+.debit {
+  color: var(--debit-color);
+}
+
+/* Personal Info Section */
+.personal-info {
+  width: 100%;
+}
+
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.info-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Status Banner */
+#status-banner {
+  padding: var(--spacing-sm) 0;
+  text-align: center;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  color: white; /* Ensure text is white */
+}
+
+#status-banner.active {
+  display: block;
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-color);
+  color: var(--text-light);
+  padding: var(--spacing-lg) 0;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.social-links a {
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.linkedin-text {
+  font-weight: bold;
+}
+
+.disclaimer {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-md);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .account-card {
+    padding: var(--spacing-md);
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  /* Improve touch targets for mobile */
+  input[type="range"], 
+  input[type="number"],
+  button {
+    min-height: 44px; /* Apple's recommended minimum touch target size */
+  }
+  
+  #blur-overlay::after {
+    max-width: 90%;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
