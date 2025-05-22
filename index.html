@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="BlurSession Example - Automatically blur sensitive content after inactivity">
+  <title>BlurSession Implementation Example</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/blur-effect.css">
+  <link rel="icon" href="data:,">
+  <style>
+    /* Basic page styling */
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    header {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 1rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: #ecf0f1;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav ul li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    main {
+      padding: 2rem 0;
+    }
+    
+    .account-card {
+      background-color: white;
+      border-radius: 4px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      margin-bottom: 1.5rem;
+    }
+    
+    .account-details p {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .account-details p:last-child {
+      border-bottom: none;
+    }
+    
+    footer {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .disclaimer {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (will remain visible) -->
+  <header>
+    <div class="container">
+      <div class="header-container">
+        <div class="logo">
+          <h1>BlurSession Example</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content - This is the area that will be blurred -->
+  <main id="sensitive-area">
+    <div class="container">
+      <section>
+        <h2>Example Sensitive Information</h2>
+        
+        <div class="account-card">
+          <h3>Account Details</h3>
+          <div class="account-details">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Account Number:</strong> 1234 5678 9012 3456</p>
+            <p><strong>Account Balance:</strong> $12,345.67</p>
+            <p><strong>Account Type:</strong> Premium Checking</p>
+          </div>
+        </div>
+        
+        <div class="account-card">
+          <h3>Personal Information</h3>
+          <div class="account-details">
+            <p><strong>Address:</strong> 123 Main Street, Anytown, USA 12345</p>
+            <p><strong>Phone:</strong> (555) 123-4567</p>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>SSN:</strong> XXX-XX-1234</p>
+          </div>
+        </div>
+        
+        <p><strong>Note:</strong> When using BlurSession, this content will automatically blur after a period of inactivity. To view the content again, simply move your mouse or touch the screen.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Status banner - shows the BlurSession status -->
+  <div id="status-banner">
+    <div class="container">
+      <span id="status-message">BlurSession active - content is protected</span>
+    </div>
+  </div>
+
+  <!-- Footer section -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="copyright">
+          <p>&copy; 2025 BlurSession Example</p>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <p>This is an example implementation of BlurSession.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Blur overlay - This is the element that creates the blur effect -->
+  <div id="blur-overlay"></div>
+
+  <!-- Scripts -->
+  <script src="js/blursession.js"></script>
+  <script>
+    // Initialize BlurSession
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.blurSession) {
+        // Configure BlurSession options
+        window.blurSession
+          .setInactivityTime(5)      // Blur after 5 seconds of inactivity
+          .setBlurIntensity(8);      // Set blur intensity to 8px
+      }
+    });
+  </script>
+</body>
+</html>
