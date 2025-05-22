@@ -40,7 +40,7 @@ blursession/
 
 1. Clone the repository from GitHub:
    ```bash
-   git clone https://github.com/username/blursession.git
+   git clone https://github.com/ChadsCode/BlurSession
    ```
    
 2. Integrate the necessary files into your project
@@ -281,7 +281,7 @@ For a PHP application:
 ```php
 <head>
     <!-- Other head elements -->
-    <link rel="stylesheet" href="<?php echo $base_url; ?>/css/styles.css">
+    <link rel="stylesheet" href "<?php echo $base_url; ?>/css/styles.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/blur-effect.css">
     <script src="<?php echo $base_url; ?>/js/blursession.js" defer></script>
 </head>
@@ -560,7 +560,8 @@ For further assistance, questions or issues:
 
 - Refer to the README.md file for additional information
 - Check the example implementations in the provided HTML files
-- Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/chadwigington/) with any questions about implementing BlurSession
+- Visit the GitHub repository: https://github.com/ChadsCode/BlurSession
+- Feel free to connect with me on https://www.linkedin.com/in/chadwigington with any questions about implementing BlurSession
 
 ---
 
